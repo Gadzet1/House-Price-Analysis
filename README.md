@@ -149,10 +149,10 @@ The average price hovers around $500,000, but let's see how the data is quantita
 ```{r}
 ggplot(houses_clean, aes(x = factor(price_classification),fill = factor(price_classification))) +
   geom_bar() +
-  labs(title = "Liczba mieszkań ze względu na cenę",
-       x = "Klasyfikacja ceny",
-       y = "Liczba mieszkań") +
-  scale_x_discrete(labels = c("Poniżej 500 000", "Powyżej 500 000"))+
+  labs(title = "Number of houses per price",
+       x = "Price classification",
+       y = "Number of houses") +
+  scale_x_discrete(labels = c("Less than 500 000", "Over 500 000"))+
   scale_fill_manual(values = c("lightblue", "lightpink"))
 
 ```
@@ -163,8 +163,8 @@ Let's see on a plot whether the number of bathrooms affects the house price.
 ggplot(houses_clean, aes(x = factor(price_classification), y = bathrooms)) +
 geom_boxplot() +
 labs(title = "",
-x = "cena",
-y = "liczba łazienek")
+x = "price",
+y = "number of bathrooms")
 ```
 The median number of bathrooms in houses above $500,000 is higher than in houses below $500,000, suggesting that more expensive properties tend to have more bathrooms. In the higher price category, the maximum number of bathrooms is 4.75, whereas in the lower price category, it is 3.75. Both price groups contain outliers, but they are more prominent in the group of houses priced above $500,000. The range of the number of bathrooms in houses below $500,000 is greater, indicating a wider variety in the number of bathrooms in this price category. On average, higher-priced properties have more bathrooms. This observation aligns with the expectation that the more a house has to offer, the higher its price.
 
@@ -172,7 +172,7 @@ Now, let's examine how the house price relates to its size and whether it has be
 
 ```{r}
 ggplot(houses_clean, aes(x = price, y = m2_living,color = factor(is_renovated))) + geom_point() +
-  labs(title = "Cena vs Powierzchnia", x = "Cena ($)", y = "Powierzchnia mieszkalna (m2)") +
+  labs(title = "Price vs Area", x = "Cena ($)", y = "House area (m2)") +
   scale_color_manual(values = c("darkblue", "cornflowerblue"))
 ```
 The data shows that there are houses priced close to a million dollars with only 150 m² (the largest area being 553 m²) and that have not been renovated. There are also houses with almost 500 m², renovated, priced at around $200,000. As expected, on average, the larger the living area, the higher the price. However, whether a house has been renovated does not seem to significantly impact its price. Let's confirm this with our model.
