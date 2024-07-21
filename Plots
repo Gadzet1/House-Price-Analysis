@@ -1,1 +1,1 @@
-plot(houses$price, xlab = "Numer obserwacji", ylab = "Cena [w $]")
+
